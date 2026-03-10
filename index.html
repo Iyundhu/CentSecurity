@@ -1,847 +1,617 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cent Security- Securing Africa's Digital Lifeline</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --nile-blue: #0A2540;
-            --cyber-teal: #00D9C0;
-            --alert-amber: #FFB800;
-            --light-bg: #F8FAFB;
-            --white: #FFFFFF;
-            --text-gray: #4A5568;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text-gray);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            width: 100%;
-            background: rgba(10, 37, 64, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(0, 217, 192, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--cyber-teal);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo i {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: var(--cyber-teal);
-        }
-
-        .menu-toggle {
-            display: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--nile-blue) 0%, #1a3a5c 100%);
-            padding: 8rem 2rem 6rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 217, 192, 0.1) 0%, transparent 70%);
-            top: -200px;
-            right: -200px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            color: var(--white);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero-content .highlight {
-            color: var(--cyber-teal);
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--alert-amber);
-            color: var(--nile-blue);
-        }
-
-        .btn-primary:hover {
-            background: #ffcc33;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 184, 0, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--cyber-teal);
-            border: 2px solid var(--cyber-teal);
-        }
-
-        .btn-secondary:hover {
-            background: var(--cyber-teal);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        .hero-visual {
-            position: relative;
-        }
-
-        .shield-graphic {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
-            animation: shield-pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes shield-pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .shield-icon {
-            font-size: 20rem;
-            color: var(--cyber-teal);
-            opacity: 0.1;
-            text-align: center;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 6rem 2rem;
-            background: var(--light-bg);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--nile-blue);
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .services-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--cyber-teal), var(--alert-amber));
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 217, 192, 0.15);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            color: var(--cyber-teal);
-            margin-bottom: 1.5rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.4rem;
-            color: var(--nile-blue);
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: var(--text-gray);
-        }
-
-        /* Who We Serve */
-        .clients {
-            padding: 6rem 2rem;
-            background: var(--white);
-        }
-
-        .clients-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .client-card {
-            text-align: center;
-            padding: 2rem;
-            border: 2px solid var(--light-bg);
-            border-radius: 15px;
-            transition: all 0.3s;
-        }
-
-        .client-card:hover {
-            border-color: var(--cyber-teal);
-            background: var(--light-bg);
-        }
-
-        .client-card i {
-            font-size: 3rem;
-            color: var(--cyber-teal);
-            margin-bottom: 1rem;
-        }
-
-        /* Why Choose Us */
-        .benefits {
-            padding: 6rem 2rem;
-            background: var(--nile-blue);
-            color: var(--white);
-        }
-
-        .benefits-grid {
-            max-width: 1000px;
-            margin: 3rem auto 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .benefit-item {
-            text-align: center;
-            padding: 1.5rem;
-        }
-
-        .benefit-item i {
-            font-size: 2.5rem;
-            color: var(--alert-amber);
-            margin-bottom: 1rem;
-        }
-
-        /* About Section */
-        .about {
-            padding: 6rem 2rem;
-            background: var(--light-bg);
-        }
-
-        .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-content h3 {
-            font-size: 2rem;
-            color: var(--nile-blue);
-            margin-bottom: 1rem;
-        }
-
-        .about-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .about-points {
-            list-style: none;
-            margin-top: 2rem;
-        }
-
-        .about-points li {
-            padding: 0.5rem 0;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .about-points li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--cyber-teal);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 6rem 2rem;
-            background: var(--white);
-        }
-
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-form {
-            background: var(--light-bg);
-            padding: 3rem;
-            border-radius: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--nile-blue);
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--cyber-teal);
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: start;
-            gap: 1.5rem;
-        }
-
-        .contact-item i {
-            font-size: 2rem;
-            color: var(--cyber-teal);
-            margin-top: 0.3rem;
-        }
-
-        .contact-item h4 {
-            color: var(--nile-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        /* WhatsApp Float Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 999;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--nile-blue);
-            color: var(--white);
-            padding: 3rem 2rem 1rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--nile-blue);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
-                display: none;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .hero-container,
-            .about-container,
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .shield-icon {
-                font-size: 10rem;
-            }
-
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cent Security | Cybersecurity for Africa’s Digital Economy</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+--nile-blue:#0A2540;
+--cyber-teal:#00D9C0;
+--alert-amber:#FFB800;
+--light-bg:#F8FAFB;
+--text-gray:#4A5568;
+--white:#ffffff;
+}
+
+body{
+font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+line-height:1.6;
+color:var(--text-gray);
+overflow-x:hidden;
+}
+
+/* NAVIGATION */
+
+nav{
+position:fixed;
+width:100%;
+background:rgba(10,37,64,.95);
+backdrop-filter:blur(10px);
+padding:1rem 0;
+z-index:1000;
+}
+
+.nav-container{
+max-width:1200px;
+margin:auto;
+padding:0 2rem;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:1.7rem;
+font-weight:bold;
+color:var(--cyber-teal);
+}
+
+.nav-links{
+display:flex;
+list-style:none;
+gap:2rem;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:var(--cyber-teal);
+}
+
+/* HERO */
+
+.hero{
+background:linear-gradient(135deg,var(--nile-blue),#1a3a5c);
+padding:9rem 2rem 6rem;
+position:relative;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background-image:
+linear-gradient(rgba(0,217,192,0.08) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,217,192,0.08) 1px, transparent 1px);
+background-size:40px 40px;
+pointer-events:none;
+}
+
+.hero-container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:4rem;
+align-items:center;
+}
+
+.hero h1{
+font-size:3.5rem;
+color:white;
+line-height:1.2;
+margin-bottom:1rem;
+}
+
+.highlight{
+color:var(--cyber-teal);
+}
+
+.hero p{
+color:white;
+opacity:.9;
+margin-bottom:2rem;
+font-size:1.1rem;
+}
+
+.btn{
+padding:1rem 2rem;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+display:inline-block;
+transition:.3s;
+}
+
+.btn-primary{
+background:var(--alert-amber);
+color:var(--nile-blue);
+}
+
+.btn-primary:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 20px rgba(255,184,0,.3);
+}
+
+.btn-secondary{
+border:2px solid var(--cyber-teal);
+color:var(--cyber-teal);
+}
+
+.btn-secondary:hover{
+background:var(--cyber-teal);
+color:white;
+}
+
+.shield{
+font-size:15rem;
+color:var(--cyber-teal);
+opacity:.15;
+text-align:center;
+}
+
+/* TRUST SECTION */
+
+.trust{
+text-align:center;
+padding:2rem;
+background:white;
+}
+
+.logos{
+display:flex;
+justify-content:center;
+gap:3rem;
+margin-top:1rem;
+font-weight:600;
+}
+
+/* SERVICES */
+
+.services{
+padding:6rem 2rem;
+background:var(--light-bg);
+}
+
+.section-header{
+text-align:center;
+margin-bottom:3rem;
+}
+
+.section-header h2{
+font-size:2.5rem;
+color:var(--nile-blue);
+}
+
+.services-grid{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:2rem;
+}
+
+.service-card{
+background:white;
+padding:2.5rem;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.07);
+transition:.5s;
+opacity:0;
+transform:translateY(40px);
+}
+
+.service-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 50px rgba(0,217,192,.2);
+border:1px solid rgba(0,217,192,.3);
+}
+
+.service-icon{
+font-size:3rem;
+color:var(--cyber-teal);
+margin-bottom:1rem;
+}
+
+/* STATS */
+
+.stats{
+display:flex;
+justify-content:center;
+gap:4rem;
+padding:4rem;
+background:var(--nile-blue);
+color:white;
+text-align:center;
+}
+
+.stat h2{
+font-size:3rem;
+color:var(--cyber-teal);
+}
+
+/* ABOUT */
+
+.about{
+padding:6rem 2rem;
+background:var(--light-bg);
+}
+
+.about-container{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:3rem;
+}
+
+.about h3{
+color:var(--nile-blue);
+margin-bottom:.8rem;
+}
+
+/* CTA */
+
+.cta{
+text-align:center;
+padding:5rem 2rem;
+background:white;
+}
+
+.cta h2{
+font-size:2.5rem;
+color:var(--nile-blue);
+margin-bottom:1rem;
+}
+
+/* CONTACT */
+
+.contact{
+padding:6rem 2rem;
+background:var(--light-bg);
+}
+
+.contact-container{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:3rem;
+}
+
+input,textarea{
+width:100%;
+padding:1rem;
+margin-top:.5rem;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+form button{
+margin-top:1rem;
+width:100%;
+}
+
+/* FOOTER */
+
+footer{
+background:var(--nile-blue);
+color:white;
+padding:3rem 2rem;
+}
+
+.footer-grid{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:2rem;
+}
+
+.copyright{
+text-align:center;
+margin-top:2rem;
+opacity:.8;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-container{
+grid-template-columns:1fr;
+}
+
+.about-container{
+grid-template-columns:1fr;
+}
+
+.contact-container{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:2.4rem;
+}
+
+.stats{
+flex-direction:column;
+gap:2rem;
+}
+
+}
+
+</style>
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-shield-alt"></i>
-                Cent Security
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Securing Africa's <span class="highlight">Digital Lifeline</span></h1>
-                <p>Practical Cybersecurity Training for SMEs in Uganda & East Africa. Protect your business from phishing, data breaches, ransomware, and insider threats.</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-calendar-check"></i> Book Free Assessment
-                    </a>
-                    <a href="#services" class="btn btn-secondary">
-                        <i class="fas fa-rocket"></i> Request a Demo
-                    </a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="shield-graphic">
-                    <div class="shield-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<nav>
+<div class="nav-container">
+<div class="logo"><i class="fas fa-shield-alt"></i> Cent Security</div>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="section-header">
-            <h2>Our Core Services</h2>
-            <p>Comprehensive cybersecurity solutions tailored for African businesses</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h3>AI governance and Policy development</h3>
-                <p>Practical, easy-to-understand training that helps employees recognize phishing, social engineering, and common cyber threats.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Cyber Risk Assessments</h3>
-                <p>We assess your current security posture and identify gaps before attackers do.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-file-contract"></i>
-                </div>
-                <h3>Compliance & Policy Support</h3>
-                <p>Support with cybersecurity policies, best practices, and compliance readiness for local and international standards.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-cogs"></i>
-                </div>
-                <h3>Technical Cybersecurity Solutions</h3>
-                <p>From basic security hygiene to advanced protection, we help secure your digital infrastructure.</p>
-            </div>
-        </div>
-    </section>
+<ul class="nav-links">
+<li><a href="#">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</div>
+</nav>
 
-    <!-- Who We Serve -->
-    <section class="clients">
-        <div class="section-header">
-            <h2>Who We Serve</h2>
-            <p>Trusted by organizations World-wide.</p>
-        </div>
-        <div class="clients-grid">
-            <div class="client-card">
-                <i class="fas fa-building"></i>
-                <h4>Small & Medium Businesses</h4>
-            </div>
-            <div class="client-card">
-                <i class="fas fa-hands-helping"></i>
-                <h4>NGOs & Development Organizations</h4>
-            </div>
-            <div class="client-card">
-                <i class="fas fa-university"></i>
-                <h4>Financial Institutions & SACCOs</h4>
-            </div>
-            <div class="client-card">
-                <i class="fas fa-graduation-cap"></i>
-                <h4>Schools & Universities</h4>
-            </div>
-            <div class="client-card">
-                <i class="fas fa-landmark"></i>
-                <h4>Government & Public Sector</h4>
-            </div>
-        </div>
-    </section>
 
-    <!-- Why Choose Us -->
-    <section class="benefits">
-        <div class="section-header">
-            <h2 style="color: white;">Why Choose Cent Security</h2>
-        </div>
-        <div class="benefits-grid">
-            <div class="benefit-item">
-                <i class="fas fa-check-circle"></i>
-                <p>Reduced phishing and social engineering risk</p>
-            </div>
-            <div class="benefit-item">
-                <i class="fas fa-user-shield"></i>
-                <p>Improved employee cyber awareness</p>
-            </div>
-            <div class="benefit-item">
-                <i class="fas fa-lock"></i>
-                <p>Stronger data protection and trust</p>
-            </div>
-            <div class="benefit-item">
-                <i class="fas fa-clipboard-check"></i>
-                <p>Compliance with best practices</p>
-            </div>
-            <div class="benefit-item">
-                <i class="fas fa-globe-africa"></i>
-                <p>Local expertise, global standards</p>
-            </div>
-        </div>
-    </section>
+<section class="hero">
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="section-header">
-            <h2>About Cent Security</h2>
-        </div>
-        <div class="about-container">
-            <div class="about-content">
-                <h3>Our Mission</h3>
-                <p>To strengthen cybersecurity resilience by delivering practical, people-focused cybersecurity awareness, training, and solutions that protect businesses, institutions, and communities from evolving digital threats.
-.</p>
-                
-                <h3>Our Vision</h3>
-                <p>To become Africa’s most trusted cybersecurity awareness and defense partner, empowering organizations and individuals to navigate the digital world securely, confidently, and sustainably.</p>
-            </div>
-            <div class="about-content">
-                <h3>Why Cent Security Exists</h3>
-                <p>East Africa is rapidly digitizing, but cyber awareness is still low. Many organizations lack skilled cybersecurity support, and most training is theoretical and not localized. Cent Security bridges this gap.</p>
-                
-                <ul class="about-points">
-                    <li>Localized training for African organizations</li>
-                    <li>Practical, hands-on approach (not theory-heavy)</li>
-                    <li>Focus on people as the first line of defense</li>
-                    <li>Affordable and scalable solutions for SMEs</li>
-                    <li>Deep understanding of local cyber risks</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+<div class="hero-container">
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="section-header">
-            <h2>Get in Touch</h2>
-            <p>Have questions or want to secure your organization? We'd love to hear from you.</p>
-        </div>
-        <div class="contact-container">
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Organization</label>
-                        <input type="text">
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        Send Message <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h4>Email</h4>
-                        <p>info@CentSecurity.com</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <h4>Phone</h4>
-                        <p>+256 XXX XXX XXX</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h4>Office Location</h4>
-                        <p>Kampala, Uganda<br>Remote & On-Site Services Available</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-clock"></i>
-                    <div>
-                        <h4>Business Hours</h4>
-                        <p>Monday – Friday: 8:30 AM – 5:30 PM<br>
-                        Saturday: 9:00 AM – 1:00 PM<br>
-                        Sunday & Public Holidays: Closed</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div>
+<h1>Cybersecurity for <span class="highlight">Africa’s Digital Economy</span></h1>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Cent Security. Securing Africa's Digital Lifeline. All rights reserved.</p>
-            <p style="margin-top: 1rem; opacity: 0.8;">
-                <i class="fas fa-shield-alt"></i> Protecting businesses across Uganda and East Africa
-            </p>
-        </div>
-    </footer>
+<p>
+Cent Security helps organizations prevent cyber attacks,
+strengthen digital resilience, and build a security-first culture.
+</p>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/256XXXXXXXXX" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+<a href="#contact" class="btn btn-primary">Book Free Assessment</a>
+<a href="#services" class="btn btn-secondary">Explore Services</a>
+</div>
 
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+<div class="shield">
+<i class="fas fa-shield-alt"></i>
+</div>
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+</div>
 
-        // Close menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
+</section>
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
 
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            e.target.reset();
-        });
+<section class="trust">
 
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(10, 37, 64, 1)';
-            } else {
-                nav.style.background = 'rgba(10, 37, 64, 0.95)';
-            }
-        });
-    </script>
+<p>Trusted by organizations across Africa</p>
+
+<div class="logos">
+<span>SMEs</span>
+<span>NGOs</span>
+<span>SACCOs</span>
+<span>Universities</span>
+<span>Government</span>
+</div>
+
+</section>
+
+
+<section class="services" id="services">
+
+<div class="section-header">
+<h2>Our Core Services</h2>
+<p>Cybersecurity solutions tailored for African organizations</p>
+</div>
+
+<div class="services-grid">
+
+<div class="service-card">
+<div class="service-icon"><i class="fas fa-brain"></i></div>
+<h3>AI Governance</h3>
+<p>Develop responsible AI policies and governance frameworks.</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+<h3>Cyber Risk Assessments</h3>
+<p>Identify security gaps before attackers exploit them.</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon"><i class="fas fa-file-contract"></i></div>
+<h3>Compliance & Policy</h3>
+<p>Support for cybersecurity compliance and best practices.</p>
+</div>
+
+<div class="service-card">
+<div class="service-icon"><i class="fas fa-cogs"></i></div>
+<h3>Managed Security</h3>
+<p>Security solutions to protect infrastructure and data.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="stats">
+
+<div class="stat">
+<h2>90%</h2>
+<p>of cyber attacks start with phishing</p>
+</div>
+
+<div class="stat">
+<h2>60%</h2>
+<p>of SMEs close after major breaches</p>
+</div>
+
+<div class="stat">
+<h2>70%</h2>
+<p>of breaches involve human error</p>
+</div>
+
+</section>
+
+
+<section class="about" id="about">
+
+<div class="about-container">
+
+<div>
+<h3>Our Mission</h3>
+
+<p>
+To strengthen cybersecurity resilience through practical
+training, awareness, and security solutions.
+</p>
+
+<h3>Our Vision</h3>
+
+<p>
+To become Africa’s most trusted cybersecurity partner.
+</p>
+</div>
+
+<div>
+
+<h3>Why Cent Security Exists</h3>
+
+<p>
+Africa is rapidly digitizing, but cyber awareness remains low.
+Cent Security bridges this gap with practical, localized training.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="cta">
+
+<h2>Secure Your Organization Today</h2>
+
+<p>Cyber threats are evolving. Make sure your organization is prepared.</p>
+
+<br>
+
+<a href="#contact" class="btn btn-primary">
+Book a Free Security Assessment
+</a>
+
+</section>
+
+
+<section class="contact" id="contact">
+
+<div class="contact-container">
+
+<form>
+
+<label>Name</label>
+<input type="text" required>
+
+<label>Email</label>
+<input type="email" required>
+
+<label>Message</label>
+<textarea rows="5"></textarea>
+
+<button class="btn btn-primary">Send Message</button>
+
+</form>
+
+
+<div>
+
+<h3>Email</h3>
+<p>info@centsecurity.com</p>
+
+<br>
+
+<h3>Phone</h3>
+<p>+256 XXX XXX XXX</p>
+
+<br>
+
+<h3>Location</h3>
+<p>Kampala, Uganda</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+<h3>Cent Security</h3>
+<p>Cybersecurity solutions for Africa’s digital future.</p>
+</div>
+
+<div>
+<h4>Services</h4>
+<p>Risk Assessments</p>
+<p>Cyber Training</p>
+<p>Security Policies</p>
+</div>
+
+<div>
+<h4>Contact</h4>
+<p>Kampala, Uganda</p>
+<p>info@centsecurity.com</p>
+</div>
+
+</div>
+
+<p class="copyright">
+© 2026 Cent Security
+</p>
+
+</footer>
+
+
+<script>
+
+const cards=document.querySelectorAll(".service-card")
+
+window.addEventListener("scroll",()=>{
+
+cards.forEach(card=>{
+
+const cardTop=card.getBoundingClientRect().top
+
+if(cardTop<window.innerHeight-100){
+
+card.style.opacity="1"
+card.style.transform="translateY(0)"
+
+}
+
+})
+
+})
+
+</script>
+
 </body>
 </html>
+```
