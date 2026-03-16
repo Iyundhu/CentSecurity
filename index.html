@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -258,6 +257,96 @@ color:var(--nile-blue);
 margin-bottom:.8rem;
 }
 
+/* TEAM SECTION */
+
+.team{
+padding:6rem 2rem;
+background:white;
+}
+
+.team-container{
+max-width:1100px;
+margin:auto;
+}
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:3rem;
+margin-top:3rem;
+}
+
+.team-card{
+background:var(--light-bg);
+padding:2.5rem;
+border-radius:20px;
+text-align:center;
+transition:.4s;
+position:relative;
+}
+
+.team-card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:5px;
+background:linear-gradient(90deg,var(--cyber-teal),var(--alert-amber));
+}
+
+.team-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 50px rgba(0,217,192,.2);
+}
+
+.team-img{
+width:140px;
+height:140px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:1rem;
+border:4px solid var(--cyber-teal);
+}
+
+.role-badge{
+display:inline-block;
+background:var(--nile-blue);
+color:white;
+padding:.4rem .8rem;
+border-radius:20px;
+font-size:.85rem;
+margin-bottom:.6rem;
+}
+
+.team-name{
+font-size:1.4rem;
+color:var(--nile-blue);
+font-weight:bold;
+}
+
+.team-bio{
+font-size:.95rem;
+margin-top:.8rem;
+}
+
+.team-social{
+margin-top:1rem;
+display:flex;
+justify-content:center;
+gap:1rem;
+}
+
+.team-social a{
+color:var(--nile-blue);
+font-size:1.2rem;
+transition:.3s;
+}
+
+.team-social a:hover{
+color:var(--cyber-teal);
+}
+
 /* CTA */
 
 .cta{
@@ -326,14 +415,8 @@ opacity:.8;
 
 @media(max-width:768px){
 
-.hero-container{
-grid-template-columns:1fr;
-}
-
-.about-container{
-grid-template-columns:1fr;
-}
-
+.hero-container,
+.about-container,
 .contact-container{
 grid-template-columns:1fr;
 }
@@ -369,7 +452,6 @@ gap:2rem;
 
 
 <section class="hero">
-
 <div class="hero-container">
 
 <div>
@@ -389,12 +471,10 @@ strengthen digital resilience, and build a security-first culture.
 </div>
 
 </div>
-
 </section>
 
 
 <section class="trust">
-
 <p>Trusted by organizations across Africa</p>
 
 <div class="logos">
@@ -404,12 +484,10 @@ strengthen digital resilience, and build a security-first culture.
 <span>Universities</span>
 <span>Government</span>
 </div>
-
 </section>
 
 
 <section class="services" id="services">
-
 <div class="section-header">
 <h2>Our Core Services</h2>
 <p>Cybersecurity solutions tailored for African organizations</p>
@@ -442,12 +520,10 @@ strengthen digital resilience, and build a security-first culture.
 </div>
 
 </div>
-
 </section>
 
 
 <section class="stats">
-
 <div class="stat">
 <h2>90%</h2>
 <p>of cyber attacks start with phishing</p>
@@ -462,66 +538,86 @@ strengthen digital resilience, and build a security-first culture.
 <h2>70%</h2>
 <p>of breaches involve human error</p>
 </div>
-
 </section>
 
 
 <section class="about" id="about">
-
 <div class="about-container">
 
 <div>
 <h3>Our Mission</h3>
-
-<p>
-To strengthen cybersecurity resilience through practical
-training, awareness, and security solutions.
-</p>
+<p>To strengthen cybersecurity resilience through practical training, awareness, and solutions.</p>
 
 <h3>Our Vision</h3>
-
-<p>
-To become Africa’s most trusted cybersecurity partner.
-</p>
+<p>To become Africa’s most trusted cybersecurity partner.</p>
 </div>
 
 <div>
-
 <h3>Why Cent Security Exists</h3>
+<p>Africa is rapidly digitizing, but cyber awareness remains low. Cent Security bridges this gap.</p>
+</div>
 
-<p>
-Africa is rapidly digitizing, but cyber awareness remains low.
-Cent Security bridges this gap with practical, localized training.
+</div>
+</section>
+
+
+<!-- ⭐ NEW TEAM SECTION -->
+
+<section class="team">
+
+<div class="team-container">
+
+<div class="section-header">
+<h2>Founding Team</h2>
+<p>Meet the leaders driving Cent Security’s mission</p>
+</div>
+
+<div class="team-grid">
+
+<div class="team-card">
+<img src="https://via.placeholder.com/300" class="team-img" alt="Technical Lead">
+<div class="role-badge">Technical Lead</div>
+<div class="team-name">Founder Name</div>
+<p class="team-bio">
+Leads cybersecurity architecture, threat intelligence, and technical innovation.
 </p>
+<div class="team-social">
+<a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="#"><i class="fas fa-envelope"></i></a>
+</div>
+</div>
 
+<div class="team-card">
+<img src="https://via.placeholder.com/300" class="team-img" alt="Operations Lead">
+<div class="role-badge">Operations Lead</div>
+<div class="team-name">Founder Name</div>
+<p class="team-bio">
+Oversees strategy, partnerships, and delivery of cybersecurity services.
+</p>
+<div class="team-social">
+<a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="#"><i class="fas fa-envelope"></i></a>
+</div>
 </div>
 
 </div>
 
+</div>
 </section>
 
 
 <section class="cta">
-
 <h2>Secure Your Organization Today</h2>
-
 <p>Cyber threats are evolving. Make sure your organization is prepared.</p>
-
 <br>
-
-<a href="#contact" class="btn btn-primary">
-Book a Free Security Assessment
-</a>
-
+<a href="#contact" class="btn btn-primary">Book a Free Security Assessment</a>
 </section>
 
 
 <section class="contact" id="contact">
-
 <div class="contact-container">
 
 <form>
-
 <label>Name</label>
 <input type="text" required>
 
@@ -532,34 +628,26 @@ Book a Free Security Assessment
 <textarea rows="5"></textarea>
 
 <button class="btn btn-primary">Send Message</button>
-
 </form>
 
-
 <div>
-
 <h3>Email</h3>
 <p>info@centsecurity.com</p>
-
 <br>
 
 <h3>Phone</h3>
 <p>+256 XXX XXX XXX</p>
-
 <br>
 
 <h3>Location</h3>
 <p>Kampala, Uganda</p>
-
 </div>
 
 </div>
-
 </section>
 
 
 <footer>
-
 <div class="footer-grid">
 
 <div>
@@ -594,20 +682,13 @@ Book a Free Security Assessment
 const cards=document.querySelectorAll(".service-card")
 
 window.addEventListener("scroll",()=>{
-
 cards.forEach(card=>{
-
 const cardTop=card.getBoundingClientRect().top
-
 if(cardTop<window.innerHeight-100){
-
 card.style.opacity="1"
 card.style.transform="translateY(0)"
-
 }
-
 })
-
 })
 
 </script>
